@@ -16,9 +16,9 @@ const products_reducer = (state, action) => {
     case SIDEBAR_CLOSE:
       return { ...state, isSidebarOpen: false }
     default:
-      return state
       throw new Error(`No Matching "${action.type}" - action type`)
-  }
+    }
+    return state
 }
 
 export default products_reducer
