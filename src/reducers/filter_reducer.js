@@ -14,7 +14,7 @@ const filter_reducer = (state, action) => {
     return {
       ...state,
       all_products: [...action.payload],
-      filter_reducer: [...action.payload],
+      filtered_products: [...action.payload],
     }
   }
 
