@@ -38,12 +38,14 @@ const Filters = () => {
             <div>
               {categories.map((c, index) => {
                 return (
-                  <button 
-                    onClick={updateFilters} 
-                    name='category' 
+                  <button
+                    onClick={updateFilters}
+                    name='category'
                     key={index}
-                    className={`${category === c.toLowerCase()? 'active' : null}`}
-                    >
+                    className={`${
+                      category === c.toLowerCase() ? 'active' : null
+                    }`}
+                  >
                     {c}
                   </button>
                 )
@@ -52,17 +54,55 @@ const Filters = () => {
           </div>
           {/* end of categories */}
           {/* company */}
-          <div className="form-control">
-              <h5>company</h5>
-              <select name="company" value={company} onChange={updateFilters}>
-                  {companies.map((c, index)=>{
-                    return <option key={index} value={c}>
-                      {c}
-                    </option>
-                  })}
-              </select>
+          <div className='form-control'>
+            <h5>company</h5>
+            <select name='company' value={company} onChange={updateFilters}>
+              {companies.map((c, index) => {
+                return (
+                  <option key={index} value={c}>
+                    {c}
+                  </option>
+                )
+              })}
+            </select>
           </div>
           {/* end of company */}
+          {/* colors */}
+          <div className='form-control'>
+            <h5>colors</h5>
+            <div className='colors'>
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      name='color'
+                      onClick={updateFilters}
+                      data-color='all'
+                      className={`${
+                        color === 'all' ? 'all-btn active' : 'all-btn'
+                      }`}
+                      key={index}
+                    >all</button>
+                  )
+                }
+                return (
+                  <button
+                    key={index}
+                    name='color'
+                    style={{ background: c }}
+                    className={`${
+                      color === c ? 'color-btn active' : 'color-btn'
+                    }`}
+                    data-color={c}
+                    onClick={updateFilters}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          {/* end of colors */}
         </form>
       </div>
     </Wrapper>
