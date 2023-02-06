@@ -3,10 +3,20 @@ import styled from 'styled-components'
 import { useFilterContext } from '../context/filter_context'
 import { getUniqueValues, formatPrice } from '../utils/helpers'
 import { FaCheck } from 'react-icons/fa'
+import { clear } from '@testing-library/user-event/dist/clear'
 
 const Filters = () => {
   const {
-    filters: { text, category, company, color, min_price, max_price, shiping },
+    filters: {
+      price,
+      text,
+      category,
+      company,
+      color,
+      min_price,
+      max_price,
+      shipping,
+    },
     updateFilters,
     clearFilters,
     all_products,
@@ -82,7 +92,9 @@ const Filters = () => {
                         color === 'all' ? 'all-btn active' : 'all-btn'
                       }`}
                       key={index}
-                    >all</button>
+                    >
+                      all
+                    </button>
                   )
                 }
                 return (
@@ -103,7 +115,35 @@ const Filters = () => {
             </div>
           </div>
           {/* end of colors */}
+          {/* price */}
+          <div className='form-control'>
+            <h5>price</h5>
+            <p className='price'>{formatPrice(price)}</p>
+            <input
+              type='range'
+              name='price'
+              onChange={updateFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+            />
+          </div>
+          {/* end price */}
+          {/* shipping */}
+          <div className='form-control shipping'>
+            <label htmlFor='shipping'>free shipping</label>
+            <input
+              type='checkbox'
+              name='shipping'
+              id='shpping'
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
+          {/* end of shipping */}
+       
         </form>
+        <button type='button' className='clear-btn' onClick={clearFilters}>clear filters</button>
       </div>
     </Wrapper>
   )
