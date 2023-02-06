@@ -16,23 +16,45 @@ const Filters = () => {
   const companies = getUniqueValues(all_products, 'company')
   const colors = getUniqueValues(all_products, 'colors')
 
-  console.log(colors)
-  
-  return <Wrapper>
-    <div className="content">
-       <form onSubmit={(e)=> e.preventDefault()}>
-            {/*search Input  */}
-              <div className="form-control">
-                 <input 
-                 type="text" name='text' placeholder='search' className='search-input'
-                 value={text}
-                 onChange={updateFilters}
-                 />
-              </div>
-            {/*end search Input  */}
-       </form>
-    </div>
-  </Wrapper>
+  return (
+    <Wrapper>
+      <div className='content'>
+        <form onSubmit={(e) => e.preventDefault()}>
+          {/*search Input  */}
+          <div className='form-control'>
+            <input
+              type='text'
+              name='text'
+              placeholder='search'
+              className='search-input'
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+          {/*end search Input  */}
+          {/* categories */}
+          <div className='form-control'>
+            <h5>category</h5>
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <button 
+                    onClick={updateFilters} 
+                    name='category' 
+                    key={index}
+                    className={`${category === c.toLowerCase()? 'active' : null}`}
+                    >
+                    {c}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          {/* end of categories */}
+        </form>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
