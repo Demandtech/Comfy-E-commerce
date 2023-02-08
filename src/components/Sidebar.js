@@ -18,7 +18,9 @@ const Sidebar = () => {
         className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}
       >
         <div className='sidebar-header'>
-          <img src={logo} alt='logo' className='logo' />
+          <Link to='/' className='logo'>
+            Gadget<span className='sub-logo'>Galore</span>{' '}
+          </Link>
           <button className='close-btn' type='button' onClick={closeSidebar}>
             <FaTimes />
           </button>
@@ -69,8 +71,14 @@ const SidebarContainer = styled.div`
     color: var(--clr-red-light);
   }
   .logo {
-    justify-self: center;
-    height: 45px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--clr-grey-1);
+
+    .sub-logo {
+      color: var(--clr-primary-5);
+    }
   }
   .links {
     margin-bottom: 2rem;
