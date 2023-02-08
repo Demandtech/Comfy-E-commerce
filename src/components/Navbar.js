@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
@@ -15,8 +14,8 @@ const Nav = () => {
     <NavContainer>
       <div className='nav-center'>
         <div className='nav-header'>
-          <Link to={'/'}>
-            <img src={logo} alt='comfy sloth' />
+          <Link to='/' className='logo'>
+            Gadget<span className='sub-logo'>Galore</span>{' '}
           </Link>
           <button onClick={openSidebar} type='button' className='nav-toggle'>
             <FaBars />
@@ -27,13 +26,15 @@ const Nav = () => {
             const { text, id, url } = link
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <NavLink to={url}>{text}</NavLink>
               </li>
             )
           })}
-          {isAuthenticated && <li>
-              <Link to={'/checkout'}>checkout</Link>
-            </li>}
+          {isAuthenticated && (
+            <li>
+              <NavLink to={'/checkout'}>checkout</NavLink>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>
@@ -56,9 +57,15 @@ const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    img {
-      width: 175px;
-      margin-left: -15px;
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-weight: 900;
+      font-size: 32px;
+      color: var(--clr-grey-1);
+
+      .sub-logo {
+        color: var(--clr-primary-5);
+      }
     }
   }
   .nav-toggle {
@@ -72,6 +79,10 @@ const NavContainer = styled.nav`
   }
   .nav-links {
     display: none;
+
+    .active {
+      border-bottom: 4px solid var(--clr-primary-5);
+    }
   }
   .cart-btn-wrapper {
     display: none;
