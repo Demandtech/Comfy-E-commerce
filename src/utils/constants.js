@@ -23,22 +23,19 @@ export const services = [
     id: 1,
     icon: <GiCompass />,
     title: 'mission',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+    text: 'To provide a one-stop-shop for all technology needs, offering a wide selection of high-quality products and exceptional customer service, all at unbeatable prices.',
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
     title: 'vision',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+    text: 'To be the leading e-commerce destination for all things technology, constantly delivering the latest and greatest products and innovative shopping experiences.',
   },
   {
     id: 3,
     icon: <GiStabbedNote />,
     title: 'history',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+    text: 'our e-commerce store has grown from a small online shop to a thriving business, committed to providing customers with the best technology products and shopping experience possible.',
   },
 ]
 
