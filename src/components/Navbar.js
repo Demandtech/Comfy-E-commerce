@@ -9,7 +9,7 @@ import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
-
+  const {isAuthenticated} = useUserContext()
   const { openSidebar } = useProductsContext()
   return (
     <NavContainer>
@@ -31,6 +31,9 @@ const Nav = () => {
               </li>
             )
           })}
+          {isAuthenticated && <li>
+              <Link to={'/checkout'}>checkout</Link>
+            </li>}
         </ul>
         <CartButtons />
       </div>

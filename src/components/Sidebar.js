@@ -10,6 +10,7 @@ import { useUserContext } from '../context/user_context'
 
 const Sidebar = () => {
   const {isSidebarOpen, closeSidebar} = useProductsContext()
+  const {isAuthenticated} = useUserContext()
   
   return (
     <SidebarContainer>
@@ -25,18 +26,20 @@ const Sidebar = () => {
         <ul className='links'>
           {links.map(({ id, text, url }) => {
             return (
-              <li key={id} >
+              <li key={id}>
                 <Link to={url} onClick={closeSidebar}>
                   {text}
                 </Link>
               </li>
             )
           })}
-          <li>
-            <Link onClick={closeSidebar} to='./checkout'>
-              Checkout
-            </Link>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <Link onClick={closeSidebar} to='./checkout'>
+                Checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>

@@ -7,9 +7,9 @@ import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
 const CartButtons = () => {
-  const {closeSidebar} = useProductsContext()
-  const {total_items} = useCartContext()
-  console.log(total_items)
+  const { closeSidebar } = useProductsContext()
+  const { total_items } = useCartContext()
+  const { isAuthenticated } = useUserContext()
   return (
     <Wrapper className='cart-btn-wrapper'>
       <Link to='/cart' className='cart-btn' onClick={closeSidebar}>
@@ -19,9 +19,15 @@ const CartButtons = () => {
           <span className='cart-value'>{total_items}</span>
         </span>
       </Link>
-      <button type='button' className='auth-btn'>
-        Login <FaUserPlus />
-      </button>
+      {isAuthenticated ? (
+        <button type='button' className='auth-btn'>
+          Logout <FaUserMinus />
+        </button>
+      ) : (
+        <button type='button' className='auth-btn'>
+          Login <FaUserPlus />
+        </button>
+      )}
     </Wrapper>
   )
 }
