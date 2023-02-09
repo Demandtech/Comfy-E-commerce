@@ -10,10 +10,13 @@ const CheckoutPage = () => {
     <main>
       <PageHero title='checkout' />
       <Wrapper className='page'>
-          <h1>Checkout Here</h1>
+          <h1>Coming Soon...</h1>
+          <Link className='btn' to={'/'}>Home</Link>
       </Wrapper>
     </main>
   )
 }
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  text-align: center;
+`
 export default CheckoutPage
